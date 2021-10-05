@@ -1,5 +1,5 @@
 #!bin/ic-repl-0.1.0 -o
-//identity private "./private.pem";
+identity private "./private.pem";
 
 let neuron_id = 3543344363;  // The neuron_id is from stake.sh or an existing neuron you own
 
