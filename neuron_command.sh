@@ -1,7 +1,5 @@
 #!bin/ic-repl-0.1.0 -o
-identity private "./private.pem";
-
-let neuron_id = 3543344363;  // The neuron_id is from stake.sh or an existing neuron you own
+load "accounts.sh";
 
 // Disburse the entire staked amount to the controller's account
 function disburse() {
@@ -21,7 +19,7 @@ function merge_maturity(percent) {
 };
 
 // Choose a specific command above to execute
-function manage(cmd) {
+function manage(neuron_id, cmd) {
   let _ = call nns.manage_neuron(
     record {
       id = opt record { id = neuron_id };
@@ -31,5 +29,5 @@ function manage(cmd) {
   )
 };
 
-manage(merge_maturity(50));
-manage(spawn());
+manage(neuron_id, merge_maturity(50));
+manage(neuron_id, spawn());

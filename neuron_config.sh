@@ -1,8 +1,5 @@
 #!bin/ic-repl-0.1.1 -o
-identity private "./private.pem";
-
-let neuron_id = 3543344363;  // The neuron_id is from stake.sh or an existing neuron you own
-let hot_key = principal "aaaaa-aa"; // Get your hotkey from nns.ic0.app
+load "accounts.sh";
 
 // Define neuron config operations
 function dissolve_delay(delay) {
@@ -34,7 +31,7 @@ function remove_hot_key(hot_key) {
 };
 
 // Choose a specific operation above to execute
-function config_neuron(operation) {
+function config_neuron(neuron_id, operation) {
   let _ = call nns.manage_neuron(
     record {
       id = opt record { id = neuron_id };
@@ -48,4 +45,4 @@ function config_neuron(operation) {
   )
 };
 
-config_neuron(dissolve_delay(3600));
+config_neuron(neuron_id, dissolve_delay(3600));

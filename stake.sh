@@ -1,5 +1,5 @@
 #!bin/ic-repl-0.1.1 -o
-identity private "./private.pem";
+load "accounts.sh";
 
 function transfer(to, amount, memo) {
   call ledger.send_dfx(
@@ -28,5 +28,4 @@ let memo = 42;  // memo determines neuron id
 stake(amount, memo);
 
 // transfer token out
-let to = "624757ad9ca36319ab644059138a73e2c52935238d22e61f3d1159473e1ebc3d";
-transfer(to, amount, 0);
+transfer(exchange_account, amount, 0);
